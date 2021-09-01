@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {Switch,Route,Redirect} from 'react-router-dom';
+import PageOne from './pages/PageOne/PageOne';
+import PageTwo from './pages/PageTwo/PageTwo';
+import {Container} from 'react-bootstrap';
+import styles from './App.module.scss'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className={`${styles.container} m-lg-4`}>
+      <Switch>
+          <Route path="/page-two" exact>
+            <PageTwo />
+          </Route>
+          <Route path="/" exact>
+            <PageOne/>
+          </Route>
+          <Redirect to="/"/>
+        </Switch>
+    </Container>
   );
 }
 
